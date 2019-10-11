@@ -30,6 +30,7 @@ export default class VideoPlayer extends Component {
         muted:                          false,
         title:                          '',
         rate:                           1,
+        additionalTopControls:          null,
     };
 
     constructor( props ) {
@@ -855,6 +856,7 @@ export default class VideoPlayer extends Component {
      */
     renderTopControls() {
 
+        const { additionalTopControls } = this.props
         const backControl = this.props.disableBack ? this.renderNullControl() : this.renderBack();
         const volumeControl = this.props.disableVolume ? this.renderNullControl() : this.renderVolume();
         const fullscreenControl = this.props.disableFullscreen ? this.renderNullControl() : this.renderFullscreen();
@@ -874,6 +876,7 @@ export default class VideoPlayer extends Component {
                     <View style={ styles.controls.topControlGroup }>
                         { backControl }
                         <View style={ styles.controls.pullRight }>
+                            {additionalTopControls}
                             { volumeControl }
                             { fullscreenControl }
                         </View>
